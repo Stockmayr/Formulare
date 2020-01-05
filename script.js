@@ -2,14 +2,14 @@
 window.addEventListener('load', () => {
     let form = "abflughafen";
     let num = "one";
-    document.getElementById("abflughafen").addEventListener('dblclick', function(){noText(form, num)});
+    document.getElementById("abflughafen").addEventListener('focus', function(){noText(form, num)});
 });
 
 //Reiseziel
 window.addEventListener('load', () => {
     let form = "reiseziel";
     let num = "two";
-    document.getElementById("reiseziel").addEventListener('dblclick', function(){noText(form, num)});
+    document.getElementById("reiseziel").addEventListener('focus', function(){noText(form, num)});
 });
 
 //Abflugdatum
@@ -33,13 +33,6 @@ window.addEventListener('load', () => {
     document.getElementById("vorname").addEventListener('dblclick', function(){noText(form, num)});
 });
 
-//Vorname
-window.addEventListener('load', () => {
-    let form = "vorname";
-    let num = "five";
-    document.getElementById("vorname").addEventListener('dblclick', function(){noText(form, num)});
-});
-
 //Nachname
 window.addEventListener('load', () => {
     let form = "nachname";
@@ -51,7 +44,7 @@ window.addEventListener('load', () => {
 window.addEventListener('load', () => {
     let form = "email";
     let num = "seven";
-    document.getElementById("email").addEventListener('dblclick', function(){noText(form, num)});
+    document.getElementById("email").addEventListener('click', function(){noText(form, num)});
 });
 
 //Geburtstag
@@ -66,6 +59,7 @@ window.addEventListener('load', () => {
     let form = "passwort";
     let num = "nine";
     document.getElementById("passwort").addEventListener('dblclick', function(){noText(form, num)});
+    document.getElementById("passwort").addEventListener('mouseleave', corPas);
 });
 
 //Passwort verification
@@ -73,6 +67,7 @@ window.addEventListener('load', () => {
     let form = "passVer";
     let num = "ten";
     document.getElementById("passVer").addEventListener('dblclick', function(){noText(form, num)});
+    document.getElementById("passVer").addEventListener('mouseleave', corPas);
 });
 
 
@@ -92,3 +87,22 @@ function noText(form, num) {
     }
 
 } 
+
+//Passwort vergleich
+function corPas() {
+    pas1 = document.getElementById("passwort").value;
+    pas2 = document.getElementById("passVer").value;
+    error = "Die Passwörter stimmen nicht überein"
+    if (pas1 !== pas2) {
+        document.getElementById("passwort").style.borderColor = "red";
+        document.getElementById("nine").innerHTML = error;
+        document.getElementById("passVer").style.borderColor = "red";
+        document.getElementById("ten").innerHTML = error;
+    }
+    else {
+        document.getElementById("passwort").style.borderColor = "black";
+        document.getElementById("nine").innerHTML = "";
+        document.getElementById("passVer").style.borderColor = "black";
+        document.getElementById("ten").innerHTML = "";
+    }
+}
